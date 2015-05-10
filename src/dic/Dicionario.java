@@ -10,7 +10,7 @@ public class Dicionario {
 	BufferedReader _leitorBuffer;
 	public Dicionario() {
 		try {
-			_leitorArquivos = new FileReader("/Users/mmresende/Documents/workspace/Produto_TIG_I/src/corncob_lowercase.txt");
+			_leitorArquivos = new FileReader("src/corncob_lowercase.txt");
 			_leitorBuffer = new BufferedReader(_leitorArquivos);
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
@@ -19,8 +19,11 @@ public class Dicionario {
 	
 	public ArrayList<String> construirDic(){
 		ArrayList<String> dic = new ArrayList<String>();
+		String s;
 		try {
-			dic.add(_leitorBuffer.readLine());
+			while ((s = _leitorBuffer.readLine()) != null) {
+				dic.add(s);
+			}
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
