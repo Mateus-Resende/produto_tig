@@ -1,6 +1,7 @@
 package code;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import dic.Dicionario;
 
@@ -19,22 +20,22 @@ public class Procura {
 		return (Boolean) null;
 	}
 
-	public String[] procuraSequencial(String elemento) {
+	public boolean procuraSequencial(String elemento) {
 
 		long startTime = System.nanoTime();
-		String[] resultado = new String[2];
-		resultado[0] = "";
+		HashMap<Boolean, Long> resposta = new HashMap<Boolean, Long>();
+		Boolean resultado = false;
 		for (int i = 0; i < _dicionario.size() - 1; i++) {
 			if (elemento.equals(_dicionario.get(i))) {
-				resultado[0] = _dicionario.get(i);
+				resultado = true;
 				break;
 			}
 		}
 
 		long endTime = System.nanoTime();
-		long duration = (endTime - startTime);
-		resultado[1] = String.valueOf(duration);
+		Long duration = (endTime - startTime);
+		resposta.put(resultado, duration);
 
-		return resultado;
+		return true;
 	}
 }
