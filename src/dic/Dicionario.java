@@ -27,6 +27,7 @@ public class Dicionario {
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
+		fecharArquivo();
 		return dic;
 	}
 	
