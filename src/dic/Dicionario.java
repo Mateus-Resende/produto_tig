@@ -34,7 +34,6 @@ public class Dicionario {
 		try {
 			_leitorArquivos.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
 		try {
