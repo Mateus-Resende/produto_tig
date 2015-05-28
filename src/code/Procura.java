@@ -14,27 +14,28 @@ public class Procura {
 	}
 
 	public boolean procuraBinaria(String elemento) {
-		
-		
-		return (Boolean) null;
-	}
-
-	public String[] procuraSequencial(String elemento) {
-
-		long startTime = System.nanoTime();
-		String[] resultado = new String[2];
-		resultado[0] = "";
-		for (int i = 0; i < _dicionario.size() - 1; i++) {
-			if (elemento.equals(_dicionario.get(i))) {
-				resultado[0] = _dicionario.get(i);
-				break;
+		int inicio = 0;
+		int fim = _dicionario.size() - 1;
+		while (inicio <= fim) {
+			int meio = (inicio + fim) / 2;
+			int comparador = elemento.compareTo(_dicionario.get(meio));
+			if (comparador < 0) {
+				fim = meio - 1;
+			} else if (comparador > 0) {
+				inicio = meio + 1;
+			} else {
+				return true;
 			}
 		}
+		return false;
+	}
 
-		long endTime = System.nanoTime();
-		long duration = (endTime - startTime);
-		resultado[1] = String.valueOf(duration);
-
-		return resultado;
+	public boolean procuraSequencial(String elemento) {
+		for (int i = 0; i < _dicionario.size(); i++) {
+			if (elemento.equals(_dicionario.get(i))) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

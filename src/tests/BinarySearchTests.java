@@ -15,12 +15,10 @@ public class BinarySearchTests {
 	Procura p;
 	Dicionario d;
 	
-	
 	@Before
 	public void setup(){
 		p = new Procura();
 		d = new Dicionario();
-		
 	}
 
 	@Test
