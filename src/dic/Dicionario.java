@@ -5,13 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Dicionario {
+@SuppressWarnings("serial")
+public class Dicionario extends ArrayList<String> {
 	FileReader _leitorArquivos;
 	BufferedReader _leitorBuffer;
 	public Dicionario() {
 		try {
 			_leitorArquivos = new FileReader("src/corncob_lowercase.txt");
 			_leitorBuffer = new BufferedReader(_leitorArquivos);
+			construirDic();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
