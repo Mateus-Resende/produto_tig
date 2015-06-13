@@ -7,19 +7,20 @@ import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 public class Dicionario extends ArrayList<String> {
+	
 	FileReader _leitorArquivos;
 	BufferedReader _leitorBuffer;
+	
 	public Dicionario() {
 		try {
 			_leitorArquivos = new FileReader("src/corncob_lowercase.txt");
 			_leitorBuffer = new BufferedReader(_leitorArquivos);
-			construirDic();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
-	public ArrayList<String> construirDic(){
+	public String[] construirDic(){
 		ArrayList<String> dic = new ArrayList<String>();
 		String s;
 		try {
@@ -30,7 +31,8 @@ public class Dicionario extends ArrayList<String> {
 			System.out.println(e.getMessage());
 		}
 		fecharArquivo();
-		return dic;
+		String[] array = new String[dic.size()];
+		return dic.toArray(array);
 	}
 	
 	public void fecharArquivo(){

@@ -6,7 +6,7 @@ import dic.Dicionario;
 
 public class Procura {
 
-	ArrayList<String> _dicionario;
+	String[] _dicionario;
 
 	public Procura() {
 		Dicionario d = new Dicionario();
@@ -15,10 +15,10 @@ public class Procura {
 
 	public boolean procuraBinaria(String elemento) {
 		int inicio = 0;
-		int fim = _dicionario.size() - 1;
+		int fim = _dicionario.length - 1;
 		while (inicio <= fim) {
 			int meio = (inicio + fim) / 2;
-			int comparador = elemento.compareTo(_dicionario.get(meio));
+			int comparador = elemento.compareTo(_dicionario[meio]);
 			if (comparador < 0) {
 				fim = meio - 1;
 			} else if (comparador > 0) {
@@ -31,8 +31,8 @@ public class Procura {
 	}
 
 	public boolean procuraSequencial(String elemento) {
-		for (int i = 0; i < _dicionario.size(); i++) {
-			if (elemento.equals(_dicionario.get(i))) {
+		for (int i = 0; i < _dicionario.length; i++) {
+			if (elemento.equals(_dicionario[i])) {
 				return true;
 			}
 		}
