@@ -20,7 +20,7 @@ public class OrderingTests {
 	public void setup() {
 		d = new Dicionario();
 		words = d.construirDic();
-		o = new Ordena();
+		o = new Ordena(words);
 	}
 
 	@Test
@@ -35,7 +35,7 @@ public class OrderingTests {
 	@Test
 	public void testOrderInsertionZulus() {
 		o.embaralhaPalavras(words);
-		o.ordenaInsercao(words);
+		o.ordenaInsercao();
 		int expected = 58109;
 		int actual = Arrays.asList(words).indexOf("zulus");
 		assertTrue("Expected to find the word zulus at " + expected
@@ -45,7 +45,7 @@ public class OrderingTests {
 	@Test
 	public void testOrderInsertionAardvark() {
 		o.embaralhaPalavras(words);
-		o.ordenaInsercao(words);
+		o.ordenaInsercao();
 		int expected = 0;
 		int actual = Arrays.asList(words).indexOf("aardvark");
 		assertTrue("Expected to find the word aadvark at " + expected
@@ -55,8 +55,8 @@ public class OrderingTests {
 	@Test
 	public void testOrderSelectionZulus() {
 		o.embaralhaPalavras(words);
-		o.ordenaSelecao(words);
-		int expected = -1;
+		o.ordenaSelecao();
+		int expected = words.length-1;
 		int actual = Arrays.asList(words).indexOf("zulus");
 		assertTrue("Expected to find the word zulus at " + expected
 				+ ", but it was found at " + actual, actual == expected);
@@ -65,31 +65,13 @@ public class OrderingTests {
 	@Test
 	public void testOrderSelectionAardvark() {
 		o.embaralhaPalavras(words);
-		o.ordenaSelecao(words);
-		int expected = d.size() - 1;
-		int actual = Arrays.asList(words).indexOf("aardvark");
-		assertTrue("Expected to find the word aardvark at " + expected
-				+ ", but it was found at " + actual, actual == expected);
-	}
-
-	@Test
-	public void testOrderQuickSortZulus() {
-		o.embaralhaPalavras(words);
-		o.ordenaQuickSort(words);
+		o.ordenaSelecao();
 		int expected = 0;
-		int actual = Arrays.asList(words).indexOf("zulus");
-		assertTrue("Expected to find the word zulus at " + expected
-				+ ", but it was found at " + actual, actual == expected);
-	}
-
-	@Test
-	public void testOrderQuickSortAardvark() {
-		o.embaralhaPalavras(words);
-		o.ordenaQuickSort(words);
-		int expected = d.size() - 1;
 		int actual = Arrays.asList(words).indexOf("aardvark");
 		assertTrue("Expected to find the word aardvark at " + expected
 				+ ", but it was found at " + actual, actual == expected);
 	}
+
+
 
 }
