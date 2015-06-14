@@ -1,19 +1,16 @@
 package code;
 
-import java.util.ArrayList;
-
 import dic.Dicionario;
 
 public class Procura {
 
 	String[] _dicionario;
 
-	public Procura() {
-		Dicionario d = new Dicionario();
+	public Procura(Dicionario d) {
 		_dicionario = d.construirDic();
 	}
 
-	public boolean procuraBinaria(String elemento) {
+	public int procuraBinaria(String elemento) {
 		int inicio = 0;
 		int fim = _dicionario.length - 1;
 		while (inicio <= fim) {
@@ -24,18 +21,18 @@ public class Procura {
 			} else if (comparador > 0) {
 				inicio = meio + 1;
 			} else {
-				return true;
+				return meio;
 			}
 		}
-		return false;
+		return -1;
 	}
 
-	public boolean procuraSequencial(String elemento) {
+	public int procuraSequencial(String elemento) {
 		for (int i = 0; i < _dicionario.length; i++) {
 			if (elemento.equals(_dicionario[i])) {
-				return true;
+				return i;
 			}
 		}
-		return false;
+		return -1;
 	}
 }

@@ -1,36 +1,36 @@
 package code;
 
-import java.util.ArrayList;
+import dic.Dicionario;
 
 public class Ordena {
 
-	ArrayList<String> _dicionario;
+	String[] _dicionario;
+	Dicionario d;
 
-	public Ordena(ArrayList<String> dicionario) {
-		_dicionario = dicionario;
+	public Ordena(Dicionario dic) {
+		d = dic;
+		_dicionario = d.construirDic();
 	}
 
 	public String[] ordenaInsercao() {
-		String[] array = new String[_dicionario.size()];
-		array = _dicionario.toArray(array);
 		int j, i;
 		String temp;
-		for (i = 1; i < array.length; i++) {
-			temp = array[i];
-			for (j = i - 1; j >= 0 && temp.compareTo(array[j]) < 0; j--) {
-				array[j+1] = array[j];
+		for (i = 1; i < _dicionario.length; i++) {
+			temp = _dicionario[i];
+			for (j = i - 1; j >= 0 && temp.compareTo(_dicionario[j]) < 0; j--) {
+				_dicionario[j+1] = _dicionario[j];
 			}
-			array[1+j] = temp;
+			_dicionario[1+j] = temp;
 		}
-		return array;
+		return _dicionario;
 	}
 
-	public ArrayList<String> ordenaSelecao() {
+	public String[] ordenaSelecao() {
 
 		return _dicionario;
 	}
 
-	public ArrayList<String> ordenaQuickSort() {
+	public String[] ordenaQuickSort() {
 
 		return _dicionario;
 	}
@@ -40,8 +40,9 @@ public class Ordena {
 		return false;
 	}
 	
-	public int indexOf(String s) {
-		return _dicionario.indexOf(s);
+	public int getWord(String s) {
+		Procura p = new Procura(d);
+		return p.procuraBinaria(s);
 	}
 
 }

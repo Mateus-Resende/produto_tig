@@ -2,8 +2,6 @@ package tests;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,36 +16,36 @@ public class SequentialTests {
 	
 	@Before
 	public void setup(){
-		p = new Procura();
 		d = new Dicionario();
+		p = new Procura(d);
 	}
 
 	@Test
 	public void sequentialTestLastWord() {
-		boolean expected = true;
-		boolean actual = p.procuraSequencial("zulus");
+		int expected = 58109;
+		int actual = p.procuraSequencial("zulus");
 		assertTrue("The word was not found", actual == expected);
 	}
 	
 	@Test
 	public void sequentialTestFirstWord() {
-		boolean expected = true;
-		boolean actual = p.procuraSequencial("aardvark");
+		int expected = 0;
+		int actual = p.procuraSequencial("aardvark");
 		assertTrue("The word was not found",actual == expected);
 	}
 	
 	@Test
 	public void sequentialTestNotFount(){
-		boolean expected = false;
-		boolean actual = p.procuraSequencial("notfound");
+		int expected = -1;
+		int actual = p.procuraSequencial("notfound");
 		assertTrue("The word shouldn't have been found.", actual == expected);
 	}
 	
 	@Test
 	public void sequentialTestMiddleWord(){
-		ArrayList<String> palavras = d.construirDic();
-		boolean expected = true;
-		boolean actual = p.procuraSequencial(palavras.get(palavras.size()/2));
+		String[] palavras = d.construirDic();
+		int expected = palavras.length / 2;
+		int actual = p.procuraSequencial(palavras[(palavras.length/2)]);
 		assertTrue("The word was not found.", actual == expected);
 	}
 
