@@ -43,7 +43,8 @@ public class SequentialTests {
 	
 	@Test
 	public void sequentialTestMiddleWord(){
-		String[] palavras = d.construirDic();
+		Dicionario dic = new Dicionario();
+		String[] palavras = dic.construirDic();
 		int expected = palavras.length / 2;
 		int actual = p.procuraSequencial(palavras[(palavras.length/2)]);
 		assertTrue("The word was not found.", actual == expected);

@@ -1,48 +1,40 @@
 package code;
 
-import dic.Dicionario;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Ordena {
 
-	String[] _dicionario;
-	Dicionario d;
-
-	public Ordena(Dicionario dic) {
-		d = dic;
-		_dicionario = d.construirDic();
+	public Ordena() {
 	}
 
-	public String[] ordenaInsercao() {
+	public String[] ordenaInsercao(String[] _dicionario) {
 		int j, i;
 		String temp;
 		for (i = 1; i < _dicionario.length; i++) {
 			temp = _dicionario[i];
 			for (j = i - 1; j >= 0 && temp.compareTo(_dicionario[j]) < 0; j--) {
-				_dicionario[j+1] = _dicionario[j];
+				_dicionario[j + 1] = _dicionario[j];
 			}
-			_dicionario[1+j] = temp;
+			_dicionario[1 + j] = temp;
 		}
 		return _dicionario;
 	}
 
-	public String[] ordenaSelecao() {
+	public String[] ordenaSelecao(String[] _dicionario) {
 
 		return _dicionario;
 	}
 
-	public String[] ordenaQuickSort() {
+	public String[] ordenaQuickSort(String[] _dicionario) {
 
 		return _dicionario;
 	}
 
-	public boolean embaralhaPalavras() {
-
-		return false;
+	public String[] embaralhaPalavras(String[] _dicionario) {
+		List<String> list = Arrays.asList(_dicionario);
+		Collections.shuffle(list);
+		return list.toArray(_dicionario);
 	}
-	
-	public int getWord(String s) {
-		Procura p = new Procura(d);
-		return p.procuraBinaria(s);
-	}
-
 }

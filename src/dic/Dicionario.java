@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 public class Dicionario extends ArrayList<String> {
-	
+
 	FileReader _leitorArquivos;
 	BufferedReader _leitorBuffer;
-	
+
 	public Dicionario() {
 		try {
 			_leitorArquivos = new FileReader("src/corncob_lowercase.txt");
@@ -19,23 +19,24 @@ public class Dicionario extends ArrayList<String> {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	public String[] construirDic(){
-		ArrayList<String> dic = new ArrayList<String>();
+
+	public String[] construirDic() {
+		String[] dic = new String[58110];
 		String s;
+		int i = 0;
 		try {
 			while ((s = _leitorBuffer.readLine()) != null) {
-				dic.add(s);
+				dic[i] = s;
+				i++;
 			}
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 		fecharArquivo();
-		String[] array = new String[dic.size()];
-		return dic.toArray(array);
+		return dic;
 	}
-	
-	public void fecharArquivo(){
+
+	public void fecharArquivo() {
 		try {
 			_leitorArquivos.close();
 		} catch (IOException e) {
